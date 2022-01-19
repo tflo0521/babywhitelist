@@ -83,24 +83,24 @@ export default function Mint() {
   async function mintbaby(how_many_babys) {
     if (babyContract) {
  
-      const price = Number(babyPrice)  * how_many_babys 
+     const price = 0
 
-      const gasAmount = await babyContract.methods.publicMintBaby(how_many_babys).estimateGas({from: walletAddress, value: price})
+      const gasAmount = await babyContract.methods.whitelistMintBaby().estimateGas({from: walletAddress, value: price})
       console.log("estimated gas",gasAmount)
 
       console.log({from: walletAddress, value: price})
 
       babyContract.methods
-            .publicMintBaby(how_many_babys)
+            .whitelistMintBaby()
             .send({from: walletAddress, value: price, gas: String(gasAmount)})
             .on('transactionHash', function(hash){
               console.log("transactionHash", hash)
             })
-          
+
     } else {
         console.log("Wallet not connected")
     }
-    
+
   };
 
   
