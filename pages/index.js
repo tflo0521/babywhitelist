@@ -72,7 +72,7 @@ export default function Mint() {
     // console.log("saleisActive" , salebool)
     setSaleStarted(salebool)
 
-    const totalSupply = await babyContract.methods.totalSupply().call() 
+    const totalSupply = await babyContract.methods.freeBabiesClaimed().call() 
     setTotalSupply(totalSupply)
 
     const babyPrice = await babyContract.methods.babyPrice().call() 
